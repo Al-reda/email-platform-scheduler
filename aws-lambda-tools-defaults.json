@@ -1,0 +1,16 @@
+{
+  "Information": [
+    "Defaults consumed by the Amazon.Lambda.Tools dotnet CLI and by our",
+    "Terraform packaging script. Values here are for reference/local use;",
+    "production values are injected by Terraform at deploy time."
+  ],
+  "profile": "default",
+  "region": "us-east-1",
+  "configuration": "Release",
+  "function-runtime": "dotnet8",
+  "function-memory-size": 256,
+  "function-timeout": 60,
+  "function-handler": "EmailPlatform.Scheduler.Lambda::EmailPlatform.Scheduler.Function::Handle",
+  "framework": "net8.0",
+  "function-architecture": "x86_64"
+}
