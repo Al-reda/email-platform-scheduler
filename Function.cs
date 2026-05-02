@@ -25,7 +25,7 @@ namespace EmailPlatform.Scheduler;
 ///        b. Send {announcementId} as an SQS message to the Email queue.
 ///   3. Return. Lambda disposes the container.
 ///
-/// Deploy handler: EmailPlatform.Scheduler.Lambda::EmailPlatform.Scheduler.Function::Handle
+/// Deploy handler: Scheduler.Lambda::EmailPlatform.Scheduler.Function::Handle
 ///
 /// Why split into (status change) + (SQS send)?
 ///   - Flipping to QUEUED *before* enqueuing is idempotency insurance: if the
