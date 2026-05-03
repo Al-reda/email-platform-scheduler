@@ -12,29 +12,19 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout this repo
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          path: scheduler
-
-      - name: Checkout shared repo
-        uses: actions/checkout@v4
-        with:
-          repository: Al-reda/email-platform-shared
-          path: shared
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: '8.0.x'
 
-      - name: Install Amazon Lambda Tools
+      - name: Install Amazon.Lambda.Tools
         run: dotnet tool install -g Amazon.Lambda.Tools
 
       - name: Package Lambda
-        run: |
-          cd scheduler
-          dotnet lambda package -o ../scheduler.zip
+        run: dotnet lambda package -o ./scheduler.zip
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
