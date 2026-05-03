@@ -13,8 +13,16 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout scheduler
         uses: actions/checkout@v4
+        with:
+          path: scheduler
+
+      - name: Checkout shared
+        uses: actions/checkout@v4
+        with:
+          repository: Al-reda/shared
+          path: shared
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
@@ -25,6 +33,7 @@ jobs:
         run: dotnet tool install -g Amazon.Lambda.Tools
 
       - name: Package Lambda
+        working-directory: scheduler
         run: dotnet lambda package -o ./scheduler.zip
 
       - name: Configure AWS credentials
@@ -35,6 +44,7 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Deploy to Lambda
+        working-directory: scheduler
         run: |
           aws lambda update-function-code \
             --function-name $LAMBDA_FUNCTION \
