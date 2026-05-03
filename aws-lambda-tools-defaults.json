@@ -10,7 +10,7 @@
   "function-runtime": "dotnet8",
   "function-memory-size": 256,
   "function-timeout": 60,
-  "function-handler": "EmailPlatform.Scheduler.Lambda::EmailPlatform.Scheduler.Function::Handle",
+  "function-handler": "Scheduler.Lambda::EmailPlatform.Scheduler.Function::Handle",
   "framework": "net8.0",
   "function-architecture": "x86_64"
 }
